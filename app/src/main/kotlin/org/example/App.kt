@@ -9,4 +9,15 @@ fun main() {
     } else {
         println("PostgresDataSourceBuilder is not running")
     }
+    PostgresDataSourceBuilder.dataSource.use { dataSource ->
+        dataSource.connection.use { connection ->
+            connection.createStatement().use { statement ->
+                statement.executeQuery("SELECT 1").use { resultSet ->
+                    while (resultSet.next()) {
+                        println(resultSet.getInt(1))
+                    }
+                }
+            }
+        }
+    }
 }
