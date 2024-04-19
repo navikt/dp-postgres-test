@@ -8,13 +8,13 @@ import java.lang.System.getenv
 internal object PostgresDataSourceBuilder {
     private const val DB_USERNAME_KEY = "DB_USERNAME"
     private const val DB_PASSWORD_KEY = "DB_PASSWORD"
-    private const val DB_URL_KEY = "DB_URL"
+    private const val DB_URL_KEY = "DB_JDBC_URL"
 
     private fun getOrThrow(key: String): String = getenv(key) ?: getProperty(key)
 
     val dataSource by lazy {
         HikariDataSource().apply {
-            jdbcUrl = getOrThrow(DB_URL_KEY).ensurePrefix("jdbc:postgresql://").stripCredentials()
+            jdbcUrl = getOrThrow(DB_URL_KEY)
             username = getOrThrow(DB_USERNAME_KEY)
             password = getOrThrow(DB_PASSWORD_KEY)
             maximumPoolSize = 10
@@ -25,13 +25,4 @@ internal object PostgresDataSourceBuilder {
             initializationFailTimeout = 5000
         }
     }
-
-    private fun String.stripCredentials() = this.replace(Regex("://.*:.*@"), "://")
-
-    private fun String.ensurePrefix(prefix: String) =
-        if (this.startsWith(prefix)) {
-            this
-        } else {
-            prefix + this.substringAfter("//")
-        }
 }
