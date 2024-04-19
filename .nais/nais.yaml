@@ -19,5 +19,5 @@ spec:
         pointInTimeRecovery: true
         tier: db-custom-1-3840
         databases:
-          - name: behandling
+          - name: postgres-test
             envVarPrefix: DB
