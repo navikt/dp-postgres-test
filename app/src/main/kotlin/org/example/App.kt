@@ -3,13 +3,10 @@
  */
 package org.example
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
-}
-
 fun main() {
-    println(App().greeting)
+    if (PostgresDataSourceBuilder.dataSource.isRunning) {
+        println("PostgresDataSourceBuilder is running")
+    } else {
+        println("PostgresDataSourceBuilder is not running")
+    }
 }
