@@ -11,7 +11,7 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation("com.zaxxer:HikariCP:5.1.0")
-    implementation("org.postgresql:postgresql:42.7.2")
+    implementation("org.postgresql:postgresql:42.7.3")
 }
 
 java {
