@@ -14,6 +14,7 @@ spec:
   gcp:
     sqlInstances:
       - type: POSTGRES_15
+        cascadingDelete: true
         highAvailability: true
         diskAutoresize: true
         pointInTimeRecovery: true
