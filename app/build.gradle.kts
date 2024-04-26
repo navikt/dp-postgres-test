@@ -11,6 +11,10 @@ repositories {
 dependencies {
     implementation(libs.postgresql.driver)
     implementation(libs.hikaricp)
+    implementation(libs.flyway)
+    implementation(libs.flyway.postgres)
+
+    testImplementation(libs.testcontainer.postgresql)
 }
 
 java {
@@ -20,6 +24,5 @@ java {
 }
 
 application {
-    // Define the main class for the application.
     mainClass = "org.example.AppKt"
 }

@@ -3,13 +3,14 @@
  */
 package org.example
 
+import org.example.PostgresDataSourceBuilder.dataSource
+import org.example.PostgresDataSourceBuilder.runMigration
+
 fun main() {
-    if (PostgresDataSourceBuilder.dataSource.isRunning) {
-        println("PostgresDataSourceBuilder is running")
-    } else {
-        println("PostgresDataSourceBuilder is not running")
-    }
-    PostgresDataSourceBuilder.dataSource.use { dataSource ->
+    // Kjør migreringer
+    runMigration()
+
+    dataSource.use { dataSource ->
         dataSource.connection.use { connection ->
             connection.createStatement().use { statement ->
                 statement.executeQuery("SELECT 1").use { resultSet ->

@@ -35,21 +35,21 @@ jobs:
     outputs:
       image: ${{ steps.docker-build-push.outputs.image }}
 
-  deploy-dev:
-    name: Deploy to dev
-    needs: [ build ]
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    environment: dev-gcp
-    permissions:
-      contents: "read"
-      id-token: "write"
-    steps:
-      - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v2
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-gcp
-          RESOURCE: .nais/nais.yaml
-          VAR: image=${{ needs.build.outputs.image }}
-          PRINT_PAYLOAD: true
+#  deploy-dev:
+#    name: Deploy to dev
+#    needs: [ build ]
+#    if: github.ref == 'refs/heads/main'
+#    runs-on: ubuntu-latest
+#    environment: dev-gcp
+#    permissions:
+#      contents: "read"
+#      id-token: "write"
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: nais/deploy/actions/deploy@v2
+#        env:
+#          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+#          CLUSTER: dev-gcp
+#          RESOURCE: .nais/nais.yaml
+#          VAR: image=${{ needs.build.outputs.image }}
+#          PRINT_PAYLOAD: true

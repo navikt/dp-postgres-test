@@ -1,10 +1,16 @@
 [versions]
 hikaricp = "5.1.0"
 postgresql = "42.7.2"
+flyway = "10.11.1"
+testcontainer = "1.19.7"
 
 [libraries]
 hikaricp = { group = "com.zaxxer", name = "HikariCP", version.ref = "hikaricp" }
+flyway = { group = "org.flywaydb", name = "flyway-core", version.ref = "flyway" }
+flyway-postgres = { group = "org.flywaydb", name = "flyway-database-postgresql", version.ref = "flyway" }
 postgresql-driver = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql" }
+
+testcontainer-postgresql = { group = "org.testcontainers", name = "postgresql", version.ref = "testcontainer" }
 
 [plugins]
 jvm = { id = "org.jetbrains.kotlin.jvm", version = "1.9.23" }
