@@ -13,4 +13,4 @@ postgresql-driver = { group = "org.postgresql", name = "postgresql", version.ref
 testcontainer-postgresql = { group = "org.testcontainers", name = "postgresql", version.ref = "testcontainer" }
 
 [plugins]
-jvm = { id = "org.jetbrains.kotlin.jvm", version = "1.9.23" }
+jvm = { id = "org.jetbrains.kotlin.jvm", version = "1.9.24" }
